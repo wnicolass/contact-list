@@ -1,7 +1,12 @@
 const express = require("express");
 const route = express.Router();
-const homeController = require("./src/controllers/HomeController");
+const HomeController = require("./src/controllers/HomeController");
+const LoginController = require("./src/controllers/LoginController");
 
-route.get("/", homeController.index);
+//home routes
+route.get("/", HomeController.index);
+
+//login routes
+route.get("/login/index", LoginController.index);
 
 module.exports = route;
