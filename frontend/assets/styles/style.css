@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+:root {
+  --purple: rgb(110, 3, 186);
+  --purple-dark: rgb(56, 3, 94);
+
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  background: var(--purple);
+  margin: 0;
+  padding: 0;
+
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5em;
+}
+
+.container {
+  max-width: 64rem;
+
+  margin: 5rem auto;
+  padding: 2rem;
+  background: #ffffff;
+
+  border-radius: 0.7rem;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.container h1 {
+  font-size: 3rem;
+}
+
+form input,
+form label,
+form button {
+  display: block;
+  width: 100%;
+
+  margin-bottom: 1rem;
+}
+
+form input {
+  font-size: 2rem;
+  height: 4rem;
+
+  border-radius: 1.5rem;
+
+  padding-inline: 2.5rem;
+  border: none;
+
+  background-color: #83828219;
+
+  transition: outline 0.2s ease;
+}
+
+form input:focus {
+  outline: 1px solid var(--purple);
+}
+
+form button {
+  border: none;
+  background-color: var(--purple);
+  color: white;
+
+  font-size: 1.6rem;
+  font-family: "Poppins", sans-serif;
+  line-height: 1.5em;
+
+  border-radius: 0.7rem;
+
+  margin-top: 3rem;
+
+  cursor: pointer;
+
+  height: 4rem;
+
+  transition: background-color 0.3s ease;
+}
+
+form button:hover {
+  background-color: var(--purple-dark);
+}
