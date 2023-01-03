@@ -3,9 +3,11 @@ exports.globalMiddleware = (req, res, next) => {
 };
 
 exports.checkCSRFError = (err, req, res, next) => {
-  if (err && err.code === "EBADCSRFTOKEN") {
+  if (err) {
     return res.render("404");
   }
+
+  next();
 };
 
 exports.tokenInjection = (req, res, next) => {
