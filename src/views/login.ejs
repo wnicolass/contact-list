@@ -25,7 +25,7 @@
                 id="email-sign-up"
                 aria-describedby="emailHelp"
                 placeholder="Enter your email..."
-                name="email"
+                name="emailSignUp"
               />
               <small id="emailHelp" class="form-text text-muted"
                 >We'll never share your email with anyone else.</small
@@ -37,6 +37,7 @@
                 type="password"
                 class="form-control"
                 id="password-sign-up"
+                name="passwordSignUp"
               />
             </div>
             <button type="submit" class="btn btn-primary">Regist</button>
@@ -66,7 +67,12 @@
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" class="form-control" id="password" />
+              <input
+                type="password"
+                class="form-control"
+                id="password"
+                name="password"
+              />
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
           </form>
