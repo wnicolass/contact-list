@@ -24,8 +24,8 @@ class Login {
     }
 
     this.body = {
-      email: this.body.emailSignUp,
-      password: this.body.passwordSignUp,
+      email: this.body.emailSignUp || this.body.email,
+      password: this.body.passwordSignUp || this.body.password,
     };
   }
 
@@ -42,10 +42,27 @@ class Login {
   }
 
   async userAlreadyExists() {
-    const user = await LoginModel.findOne({ email: this.body.email });
+    this.user = await LoginModel.findOne({ email: this.body.email });
 
-    if (user) {
+    if (this.user) {
       this.errors.push("User already exists.");
+    }
+  }
+
+  async signin() {
+    this.validate();
+    if (this.errors.length > 0) return;
+    this.user = await LoginModel.findOne({ email: this.body.email });
+
+    if (!this.user) {
+      this.errors.push("Your email or password may be incorrect.");
+      return;
+    }
+
+    if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
+      this.errors.push("Invalid password.");
+      this.user = null;
+      return;
     }
   }
 
@@ -59,11 +76,7 @@ class Login {
     const salt = bcryptjs.genSaltSync();
     this.body.password = bcryptjs.hashSync(this.body.password, salt);
 
-    try {
-      this.user = await LoginModel.create(this.body);
-    } catch (e) {
-      console.log(e);
-    }
+    this.user = await LoginModel.create(this.body);
   }
 }
 module.exports = Login;
