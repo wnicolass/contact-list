@@ -17,3 +17,13 @@ exports.tokenInjection = (req, res, next) => {
   res.locals.csrfToken = req.csrfToken();
   next();
 };
+
+exports.loginRequired = (req, res, next) => {
+  if (!req.session.user) {
+    req.flash("errors", "You must be logged in to see this page.");
+    req.session.save(() => res.redirect("/"));
+    return;
+  }
+
+  next();
+};
