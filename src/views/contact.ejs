@@ -1,0 +1,61 @@
+<%- include('includes/head.ejs') %> <%- include('includes/nav.ejs') %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-2"></div>
+    <div class="col-lg-8 my-3">
+      <h1 class="text-center">Contact List 📘</h1>
+      <p class="text-center lead">Create or edit your contacts below</p>
+
+      <%- include('includes/messages') %>
+
+      <form action="/contact/create" method="POST">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Enter contact name"
+            name="name"
+          />
+        </div>
+        <div class="form-group">
+          <label for="surname">Surname</label>
+          <input
+            type="text"
+            class="form-control"
+            id="surname"
+            placeholder="Enter contact surname"
+            name="surname"
+          />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Enter contact email"
+            name="email"
+          />
+        </div>
+        <div class="form-group">
+          <label for="phone">Tel</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            placeholder="(999) 999-999-999"
+            name="phone"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+    </div>
+    <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<%- include('includes/footer.ejs') %>
