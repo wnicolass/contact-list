@@ -66,4 +66,20 @@ Contact.prototype.create = async function () {
   this.contact = await ContactModel.create(this.body);
 };
 
+Contact.prototype.edit = async function (id) {
+  console.log(id);
+  if (typeof id !== "string") {
+    return;
+  }
+  this.validate();
+  console.log("passei do validate");
+  if (this.errors.length > 0) {
+    return;
+  }
+
+  this.contact = await ContactModel.findByIdAndUpdate(id, this.body, {
+    new: true,
+  });
+};
+
 module.exports = Contact;
