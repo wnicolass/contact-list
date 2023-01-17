@@ -83,4 +83,10 @@ Contact.searchById = async function (id) {
   return contact;
 };
 
+Contact.searchAllContacts = async function () {
+  //order by DESC (-1)
+  const contacts = await ContactModel.find().sort({ createdAt: -1 });
+  return contacts;
+};
+
 module.exports = Contact;
