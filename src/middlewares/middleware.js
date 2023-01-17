@@ -20,7 +20,7 @@ exports.tokenInjection = (req, res, next) => {
 
 exports.loginRequired = (req, res, next) => {
   if (!req.session.user) {
-    req.flash("errors", "You must be logged in to see this page.");
+    req.flash("errors", "You must be logged in.");
     req.session.save(() => res.redirect("/"));
     return;
   }
