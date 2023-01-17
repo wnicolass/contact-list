@@ -59,7 +59,11 @@
             value="<%= contact.phone %>"
           />
         </div>
-        <button type="submit" class="btn btn-primary">Create</button>
+        <% if (contact._id) { %>
+          <button type="submit" class="btn btn-primary">Edit</button>
+        <% } else { %>
+          <button type="submit" class="btn btn-primary">Create</button>
+        <% } %> 
       </form>
     </div>
     <div class="col-lg-2"></div>
