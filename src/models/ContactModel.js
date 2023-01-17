@@ -50,12 +50,6 @@ Contact.prototype.validate = function () {
   }
 };
 
-Contact.searchById = async function (id) {
-  if (typeof id !== "string") return;
-  const contact = await ContactModel.findById(id);
-  return contact;
-};
-
 Contact.prototype.create = async function () {
   this.validate();
 
@@ -80,6 +74,13 @@ Contact.prototype.edit = async function (id) {
   this.contact = await ContactModel.findByIdAndUpdate(id, this.body, {
     new: true,
   });
+};
+
+//static methods
+Contact.searchById = async function (id) {
+  if (typeof id !== "string") return;
+  const contact = await ContactModel.findById(id);
+  return contact;
 };
 
 module.exports = Contact;
