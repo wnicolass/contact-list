@@ -5,49 +5,51 @@
     <div class="col-lg-2"></div>
 
     <div class="col-lg-8 my-3">
-      <h1 class="text-center">Sign In</h1>
-      <p class="text-center lead">Welcome! Sign in your account below!</p>
+      <h1 class="text-center">Sign Up</h1>
+      <p class="text-center lead">
+        Create your account and enjoy your own contact-list.
+      </p>
 
       <%- include('includes/messages') %>
 
       <div class="row">
         <div class="col-lg my-5">
-          <h4>Sign In</h4>
-          <p>If you already have an account, sign in and view your contacts.</p>
-          <form id="signInForm" action="/login/signin" method="POST">
+          <h4>Sign Up</h4>
+          <p>
+            If you don't have an account yet, please fill out the form below.
+          </p>
+          <form id="signUpForm" action="/login/register" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="form-group">
-              <label for="email">Email address</label>
+              <label for="email-sign-up">Email address</label>
               <input
                 type="email"
                 class="form-control"
-                id="email"
+                id="email-sign-up"
                 aria-describedby="emailHelp"
                 placeholder="Enter your email..."
-                name="email"
+                name="emailSignUp"
               />
               <small id="emailHelp" class="form-text text-muted"
                 >We'll never share your email with anyone else.</small
               >
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
+              <label for="password-sign-up">Password</label>
               <input
                 type="password"
                 class="form-control"
-                id="password"
-                name="password"
+                id="password-sign-up"
+                name="passwordSignUp"
               />
             </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-primary">Regist</button>
           </form>
-          <p class="text-center my-2">
-            If you don't have an account click
-            <a href="/login/signup">here</a> to Sign Up.
-          </p>
         </div>
       </div>
     </div>
+
+    <div class="col-lg-2"></div>
   </div>
 </div>
 

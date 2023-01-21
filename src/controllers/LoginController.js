@@ -7,6 +7,10 @@ exports.index = (req, res) => {
   return res.render("login");
 };
 
+exports.signUp = (req, res) => {
+  return res.render("sign-up");
+};
+
 exports.register = async (req, res) => {
   try {
     const login = new Login(req.body);
