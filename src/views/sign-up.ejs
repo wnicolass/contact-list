@@ -21,26 +21,26 @@
           <form id="signUpForm" action="/login/register" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
             <div class="form-group">
-              <label for="email-sign-up">Email address</label>
+              <label for="email">Email address</label>
               <input
                 type="email"
                 class="form-control"
-                id="email-sign-up"
+                id="email"
                 aria-describedby="emailHelp"
                 placeholder="Enter your email..."
-                name="emailSignUp"
+                name="email"
               />
               <small id="emailHelp" class="form-text text-muted"
                 >We'll never share your email with anyone else.</small
               >
             </div>
             <div class="form-group">
-              <label for="password-sign-up">Password</label>
+              <label for="password">Password</label>
               <input
                 type="password"
                 class="form-control"
-                id="password-sign-up"
-                name="passwordSignUp"
+                id="password"
+                name="password"
               />
             </div>
             <button type="submit" class="btn btn-primary">Regist</button>

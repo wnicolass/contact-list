@@ -24,8 +24,8 @@ class Login {
     }
 
     this.body = {
-      email: this.body.emailSignUp ?? this.body.email,
-      password: this.body.passwordSignUp ?? this.body.password,
+      email: this.body.email,
+      password: this.body.password,
     };
   }
 
