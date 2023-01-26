@@ -27,6 +27,7 @@ const {
   checkCSRFError,
   tokenInjection,
   serverError,
+  inexistingRoutes,
 } = require("./src/middlewares/middleware");
 
 app.use(helmet());
@@ -56,6 +57,7 @@ app.use(globalMiddleware);
 app.use(checkCSRFError);
 app.use(tokenInjection);
 app.use(routes);
+app.use(inexistingRoutes);
 app.use(serverError);
 
 app.on("connected to db", () => {

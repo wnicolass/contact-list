@@ -2,6 +2,7 @@ exports.globalMiddleware = (req, res, next) => {
   res.locals.errors = req.flash("errors");
   res.locals.success = req.flash("success");
   res.locals.user = req.session.user;
+  res.locals.url = req.originalUrl;
   next();
 };
 
@@ -31,4 +32,8 @@ exports.loginRequired = (req, res, next) => {
 exports.serverError = (error, req, res, next) => {
   console.error(error);
   res.status(500).render("500");
+};
+
+exports.inexistingRoutes = (req, res) => {
+  res.status(404).render("404");
 };
