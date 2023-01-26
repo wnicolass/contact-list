@@ -26,9 +26,11 @@ const {
   globalMiddleware,
   checkCSRFError,
   tokenInjection,
+  serverError,
+  inexistingRoutes,
 } = require("./src/middlewares/middleware");
 
-// app.use(helmet());
+app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
@@ -55,6 +57,8 @@ app.use(globalMiddleware);
 app.use(checkCSRFError);
 app.use(tokenInjection);
 app.use(routes);
+app.use(inexistingRoutes);
+app.use(serverError);
 
 app.on("connected to db", () => {
   app.listen(3000, () => console.log("Server running on port 3000"));

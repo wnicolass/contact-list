@@ -52,6 +52,7 @@ var Contact = /*#__PURE__*/function () {
       if (input.value.length > 0) {
         if (!/(^\d{9}$)|(^\+\d{12}$)/.test(input.value)) {
           input.classList.add("is-invalid");
+          input.setAttribute("data-error", "true");
         } else {
           input.classList.replace("is-invalid", "is-valid");
         }
@@ -68,6 +69,7 @@ var Contact = /*#__PURE__*/function () {
       var surnameInput = this.contactForm.querySelector('input[name="surname"]');
       var emailInput = this.contactForm.querySelector('input[name="email"]');
       var phoneInput = this.contactForm.querySelector('input[name="phone"]');
+      var hasError = false;
       nameInput.addEventListener("input", function (event) {
         return _this.validateInputs(event);
       });
@@ -79,6 +81,15 @@ var Contact = /*#__PURE__*/function () {
       });
       phoneInput.addEventListener("input", function () {
         return _this.validatePhone(phoneInput);
+      });
+      this.contactForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        hasError = [nameInput, surnameInput, emailInput, phoneInput].some(function (input) {
+          return input.classList.contains("is-invalid");
+        });
+        if (!hasError) {
+          _this.contactForm.submit();
+        }
       });
     }
   }, {

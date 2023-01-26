@@ -28,6 +28,7 @@ export default class Contact {
     if (input.value.length > 0) {
       if (!/(^\d{9}$)|(^\+\d{12}$)/.test(input.value)) {
         input.classList.add("is-invalid");
+        input.setAttribute("data-error", "true");
       } else {
         input.classList.replace("is-invalid", "is-valid");
       }
@@ -45,12 +46,25 @@ export default class Contact {
     );
     const emailInput = this.contactForm.querySelector('input[name="email"]');
     const phoneInput = this.contactForm.querySelector('input[name="phone"]');
+    let hasError = false;
+
     nameInput.addEventListener("input", (event) => this.validateInputs(event));
     surnameInput.addEventListener("input", (event) =>
       this.validateInputs(event)
     );
     emailInput.addEventListener("input", () => this.validateEmail(emailInput));
     phoneInput.addEventListener("input", () => this.validatePhone(phoneInput));
+    this.contactForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      hasError = [nameInput, surnameInput, emailInput, phoneInput].some(
+        (input) => input.classList.contains("is-invalid")
+      );
+
+      if (!hasError) {
+        this.contactForm.submit();
+      }
+    });
   }
 
   init() {
