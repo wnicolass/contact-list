@@ -27,3 +27,8 @@ exports.loginRequired = (req, res, next) => {
 
   next();
 };
+
+exports.serverError = (error, req, res, next) => {
+  console.error(error);
+  res.status(500).render("500");
+};
