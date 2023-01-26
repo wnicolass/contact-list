@@ -29,7 +29,7 @@ const {
   serverError,
 } = require("./src/middlewares/middleware");
 
-// app.use(helmet());
+app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, "public")));
